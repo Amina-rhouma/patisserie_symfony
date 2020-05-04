@@ -11,7 +11,7 @@ class AuthenticationController {
      */
     public function signin()
     {
-        return new Response("ajouter fonction sighin");
+        return new Response("ajouter fonction signin");
     }
     /**
      * @Route("/login")
