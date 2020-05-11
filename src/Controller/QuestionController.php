@@ -13,12 +13,14 @@ class QuestionController extends AbstractController
      */
     public function homepage()
     {
+        $people = [
+            "prenom" => "Firas",
+            "nom"    => "Amina"
+        ];
+
         return $this->render(
             'question/homepage.html.twig',
-            [
-                "prenom" => "Firas",
-                "nom"    => "amina"
-            ]
+            $people
         );
     }
     /**
