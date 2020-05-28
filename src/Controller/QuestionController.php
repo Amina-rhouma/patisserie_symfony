@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="app_home")
      */
     public function homepage()
     {
@@ -24,12 +24,12 @@ class QuestionController extends AbstractController
         );
     }
     /**
-     * @Route("/questions/{anything}")
+     * @Route("/questions/{question_name}", name="app_show_question")
      */
-    public function show($anything)
+    public function show($question_name)
     {
         return new Response(sprintf(
             'Future page to show the question "%s"!',
-            $anything));
+            $question_name));
     }
 }

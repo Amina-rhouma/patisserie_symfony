@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="container">
+        <ul class="">
+            {% for answer in answers %}
+                <li class="">
+                    <div class="">
+                        <div class=" js-vote-arrows" style="min-width: 90px;">
+                            <a class="vote-up" href="#" data-direction="up"><i class="far fa-arrow-alt-circle-up"></i></a>
+                            <a class="vote-down" href="#" data-direction="down"><i class="far fa-arrow-alt-circle-down"></i></a>
+                            <span>+ <span class="js-vote-total">6</span></span>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/question_show.js') }}"></script>
+    {% endblock %}
+{% endblock %}
