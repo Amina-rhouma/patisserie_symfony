@@ -1,0 +1,21 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-list .item {
+  flex: 0 100%;
+}
+.product-list .item .product {
+  border: 1px solid #888888;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.product-list .item .product img {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .product-list .item {
+    flex: 0 50%;
+  }
+}

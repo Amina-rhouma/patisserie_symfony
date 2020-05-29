@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %}liste des gateaux{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/product-list.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <div class="product-list">
+        {% for item in productList %}
+        <div class="item">
+            <div class="product">
+                <img src="{{ asset(item.getImagePath()) }}">
+                <h2>{{ item.getTitle() }}</h2>
+                <p>{{ item.getPrice() }}€</p>
+                <button>ajouter au panier</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

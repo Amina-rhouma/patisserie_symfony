@@ -3,23 +3,15 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-    <header>
-        <p>patisserie en ligne</p>
-    </header>
-    <main>
-        <h1>{{ title }}</h1>
-        <div class="product-meta">
-            <div>
-                <img src="{{ asset(imagePath) }}">
-            </div>
-            <div>
-                <p class="price">{{ price }} €</p>
-                <button>Ajoutez au panier</button>
-            </div>
+    <h1>{{ title }}</h1>
+    <div class="product-meta">
+        <div>
+            <img src="{{ asset(imagePath) }}">
         </div>
-        <p class="description">{{ description }}</p>
-    </main>
-    <footer>
-        <p>contactez nous</p>
-    </footer>
+        <div>
+            <p class="price">{{ price }} €</p>
+            <button>Ajoutez au panier</button>
+        </div>
+    </div>
+    <p class="description">{{ description }}</p>
 {% endblock %}

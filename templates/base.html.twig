@@ -8,7 +8,18 @@
         {% endblock %}
     </head>
     <body>
+        {% block header %}
+            {% include 'header.html.twig' %}
+        {% endblock %}
+
+        <main>
         {% block body %}{% endblock %}
+        </main>
+
+        {% block footer %}
+            {% include 'footer.html.twig' %}
+        {% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
