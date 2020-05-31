@@ -11,7 +11,7 @@
         {% for item in productList %}
         <div class="item">
             <div class="product">
-                <img src="{{ asset(item.getImagePath()) }}">
+                <img src="{{ asset(item.getImage()) }}">
                 <h2>{{ item.getTitle() }}</h2>
                 <p>{{ item.getPrice() }}€</p>
                 <button>ajouter au panier</button>
