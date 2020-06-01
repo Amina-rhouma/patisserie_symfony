@@ -4,30 +4,31 @@ namespace App\Controller;
 
 use App\Entity\Product;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductCakeListController extends AbstractController
 {
+    private $cakeImagesFolder = "images/produits/";
+    private $em;
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em= $em;
+    }
+
     /**
-     * @Route("/produits/gateaux")
+     * @Route("/produits/gateaux", name="showCakeList")
      */
    public function showProductList()
    {
-       $cakeFolder = "images/produits/";
+       $repo=$this->em->getRepository(Product::class);
+       $data= $repo->findAll();
 
-       $p1 = new Product("Gateau pistache", 60, "description pistache", $cakeFolder . "gateau-pistache.jpg");
-       $p2 = new Product("Gateau fraise", 50, "description fraise", $cakeFolder . "gateau-fraise.jpg");
-       $p3 = new Product("gateau chocolat", 55, "description chhocolat", $cakeFolder. "gateau-chocolat.jpg");
-       $p4 = new Product("gateau vanille", 65, "description vanille", $cakeFolder. "gateau-vanille.jpg");
-       $p5 = new Product("gateau citron", 40, "description citron", $cakeFolder. "gateau-citron.jpg");
-
-
-
-       $data = [
-           "productList" => [$p1, $p2, $p3, $p4, $p5]
-       ];
-       return $this->render("product/productCakeList.html.twig", $data);
+       return $this->render("product/productCakeList.html.twig", [
+           'cakeList' => $data,
+           'cakeImagesFolder' => $this->cakeImagesFolder
+       ]);
    }
 
 }

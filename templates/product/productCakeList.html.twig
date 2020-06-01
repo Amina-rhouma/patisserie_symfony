@@ -8,12 +8,12 @@
 
 {% block body %}
     <div class="product-list">
-        {% for item in productList %}
+        {% for cake in cakeList %}
         <div class="item">
             <div class="product">
-                <img src="{{ asset(item.getImage()) }}">
-                <h2>{{ item.getTitle() }}</h2>
-                <p>{{ item.getPrice() }}€</p>
+                <img src="{{ asset(cakeImagesFolder ~ cake.getImage()) }}">
+                <h2>{{ cake.title }}</h2>
+                <p>{{ cake.price }}€</p>
                 <button>ajouter au panier</button>
             </div>
         </div>
