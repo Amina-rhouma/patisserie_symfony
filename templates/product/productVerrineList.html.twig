@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+{% block title %}liste des verrines{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/product-list.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <div class="product-list">
+        {% for verrine in verrineList %}
+            <div class="item">
+                <a href="{{ path('productVerrine', {productId: verrine.id}) }}">
+                    <div class="product">
+                        <img src="{{ asset(imageFolder ~ verrine.getImage()) }}">
+                        <h2>{{ verrine.title }}</h2>
+                        <p>{{ verrine.price }}€</p>
+                        <button>ajouter au panier</button>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
