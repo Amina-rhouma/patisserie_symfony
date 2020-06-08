@@ -38,7 +38,7 @@ class Product
      */
     private $image;
 
-    public function __construct($title, $price, $description, $image) {
+    public function __construct(string $title, float $price, string $description, string $image) {
         $this->setTitle($title);
         $this->setPrice($price);
         $this->setDescription($description);

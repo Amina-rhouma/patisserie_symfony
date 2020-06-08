@@ -23,9 +23,9 @@ class ProductVerrineListController extends AbstractController
      */
     public function showVerrineList(VerrineRepository $repo): Response
     {
-        // $v1 = new Verrine("tiramisu", "6", "dessert leger", "tiramisu.jpg");
-        // $this->em->persist($v1);
-        // $this->em->flush();
+       // $v2 = new Verrine("Bouza", "4", "Une délicieuse crème faite à base de noisettes, ", "bouza.jpg");
+        //$this->em->persist($v2);
+       // $this->em->flush();
 
         $data = $repo->findAll();
 
