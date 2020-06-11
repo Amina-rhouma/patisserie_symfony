@@ -3,5 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    {{ form(monFormulaire) }}
+    {{ form_start(monFormulaire) }}
+        {{ form_widget(monFormulaire) }}
+        <input type="submit"  value="Ajouter" />
+    {{ form_end(monFormulaire) }}
 {% endblock %}

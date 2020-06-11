@@ -18,6 +18,7 @@ class VerrineRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Verrine::class);
     }
+
     public function findById($productId)
     {
         $criteria = ['id' => $productId];

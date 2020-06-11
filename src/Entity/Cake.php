@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
+use App\Repository\CakeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProductRepository::class)
- * @ORM\Table(name="products")
+ * @ORM\Entity(repositoryClass=CakeRepository::class)
+ * @ORM\Table(name="cake")
  */
-class Product
+class Cake
 {
     /**
      * @ORM\Id()

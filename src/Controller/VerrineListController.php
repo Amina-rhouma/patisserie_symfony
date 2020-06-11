@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Verrine;
 use App\Repository\VerrineRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ProductVerrineListController extends AbstractController
+class VerrineListController extends AbstractController
 {
     private $imageFolder = "images/produits/";
     private $em;
@@ -29,7 +28,7 @@ class ProductVerrineListController extends AbstractController
 
         $data = $repo->findAll();
 
-        return $this->render("product/productVerrineList.html.twig", [
+        return $this->render("product/verrineList.html.twig", [
             'verrineList' => $data,
             'imageFolder' => $this->imageFolder
         ]);

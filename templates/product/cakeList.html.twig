@@ -10,7 +10,7 @@
     <div class="product-list">
         {% for cake in cakeList %}
         <div class="item">
-            <a href="{{ path('productGateau', { productId: cake.id }) }}">
+            <a href="{{ path('productGateau', { id: cake.id }) }}">
                 <div class="product">
                     <img src="{{ asset(imageFolder ~ cake.getImage()) }}">
                     <h2>{{ cake.title }}</h2>

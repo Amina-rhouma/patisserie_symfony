@@ -10,7 +10,7 @@
     <div class="product-list">
         {% for verrine in verrineList %}
             <div class="item">
-                <a href="{{ path('productVerrine', {productId: verrine.id}) }}">
+                <a href="{{ path('productVerrine', {id: verrine.id}) }}">
                     <div class="product">
                         <img src="{{ asset(imageFolder ~ verrine.getImage()) }}">
                         <h2>{{ verrine.title }}</h2>
