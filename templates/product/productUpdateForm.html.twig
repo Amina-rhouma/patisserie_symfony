@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Update product{% endblock %}
+
+{% block body %}
+    {{ form_start(monFormulaire) }}
+    {{ form_widget(monFormulaire) }}
+    <img src="{{ asset(imageFolder ~ oldImage) }}" />
+    <input type="submit" value="Modifier" />
+    {{ form_end(monFormulaire) }}
+{% endblock %}
