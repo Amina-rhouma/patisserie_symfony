@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}login{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau compte</h1>
+    <form method="POST" action="">
+        <div class="">
+            <div class="">
+                <label for="name"> Nom :</label>
+                <input type="text" name="name" class="" id="name" placeholder="votre nom" required autofocus/>
+            </div>
+
+            <div class="">
+                <label for="firstName"> Prénom : </label>
+                <input type="text" name="firstName" class="" id="firstName" placeholder="votre prenom" required autofocus/>
+            </div>
+
+            <div class="">
+                <label for="">Date de naissance :</label>
+                <input type="date" name="birthday" class="" id=""/>
+            </div>
+            <div class="">
+                <label for="address">Adresse :</label>
+                <input type="text" name="address" class="" id="address" placeholder="Adresse" required autofocus/>
+            </div>
+            <div class="">
+                <label for="email">email : </label>
+                <input type="email" name="email" class="" id="email" placeholder="email" required autofocus/>
+            </div>
+            <div class="">
+                <label for="">Mot de passe : </label>
+                <input type="password" name="password"  class="" id=""  required/>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="" value="Créer un compte" class="btn btn-primary" />
+            </div>
+        </div>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token('login_form') }}">
+    </form>
+{% endblock %}

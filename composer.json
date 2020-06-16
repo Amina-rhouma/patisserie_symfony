@@ -25,7 +25,8 @@
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.19",
-        "symfony/profiler-pack": "^1.0"
+        "symfony/profiler-pack": "^1.0",
+        "theofidry/psysh-bundle": "^4.3"
     },
     "config": {
         "preferred-install": {

@@ -1,0 +1,79 @@
+main {
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+}
+
+article > img:first-child {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+article #product-info {
+  text-align: center;
+  flex-grow: 1;
+}
+
+article #product-info > :not(:first-child) {
+  margin-top: 20px;
+}
+
+article #product-info h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+article #product-info #price {
+  font-style: italic;
+  font-weight: 100;
+  color: #555555;
+}
+
+article #product-info #price span {
+  font-style: initial;
+  color: initial;
+  font-weight: bold;
+}
+
+article #product-info button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  text-transform: uppercase;
+  font-weight: 100;
+  transition: 200ms;
+  cursor: pointer;
+}
+
+article #product-info button:hover {
+  background: black;
+  color: white;
+  transition: 200ms;
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  article {
+    flex-direction: row;
+  }
+
+  article > img:first-child {
+    max-width: 600px;
+    margin-right: 20px;
+  }
+
+  article #product-info {
+    text-align: left;
+  }
+}

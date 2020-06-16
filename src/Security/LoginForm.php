@@ -21,8 +21,8 @@ class LoginForm implements AuthenticatorInterface
      */
     public function supports(Request $request): ?bool
     {
-        // TODO: Implement supports() method.
-        dd('amina');
+       return $request->attributes->get('_route') === 'app_login'
+           && $request->isMethod('POST');
     }
 
     /**
@@ -40,7 +40,7 @@ class LoginForm implements AuthenticatorInterface
      */
     public function authenticate(Request $request): PassportInterface
     {
-        // TODO: Implement authenticate() method.
+        dd($request->getMethod());
     }
 
     /**

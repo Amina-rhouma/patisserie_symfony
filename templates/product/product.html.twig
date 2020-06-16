@@ -2,16 +2,20 @@
 
 {% block title %}{{ product.title }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/product-page.css') }}" />
+{% endblock %}
+
 {% block body %}
-    <h1>{{ product.title }}</h1>
-    <div class="product-meta">
-        <div>
-            <img src="{{ asset(imageFolder ~ product.image) }}">
+    <article>
+        <img src="{{ asset(imageFolder ~ product.image) }}">
+        <div id="product-info">
+            <h1>{{ product.title }}</h1>
+            <div id="description">{{ product.description }}</div>
+            <p id="price">Prix : <span>{{ product.price }} €</span></p>
+            <button>Ajouter au panier</button>
         </div>
-        <div>
-            <p class="price">{{ product.price }} €</p>
-            <button>Ajoutez au panier</button>
-        </div>
-    </div>
-    <p class="description">{{ product.description }}</p>
+    </article>
 {% endblock %}
