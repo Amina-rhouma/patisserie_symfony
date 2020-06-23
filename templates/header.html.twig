@@ -1,11 +1,17 @@
 <header>
-    <h1>Mina Hooma</h1>
-    <h2>patisserie</h2>
+        <a href="{{ path('accueil') }}"><h1>Mina Hooma</h1></a>
+        <h2>patisserie</h2>
     <ul class="main-menu">
         <li><a href="{{ path('showCakeList') }}">Gateaux</a></li>
         <li><a href="{{ path('showVerrineList') }}">Verrines</a></li>
         <li><a href="#">Formation</a></li>
-        <li><a href="#">Connexion <i class="fas fa-user"></i></a></li>
-        <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a href="#">a propos</a></li>
+        <li><a href="{{ path('app_panier') }}"><i class="fas fa-shopping-cart"></i></a></li>
+        {% if app.user %}
+            <li><a href="{{ path('app_logout') }}">Deconnection</a></li>
+        {% else %}
+            <li><a href="{{ path('app_signin') }}">Connexion <i class="fas fa-user"></i></a></li>
+        {% endif %}
+
     </ul>
 </header>

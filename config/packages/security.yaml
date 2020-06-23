@@ -1,18 +1,33 @@
 security:
     encoders:
-        encoder: auto
+        App\Entity\User:
+            algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
+            app_user_provider:
+                entity:
+                    class: 'App\Entity\User'
+
+                    property: 'email'
+                    # optional: if you're using multiple Doctrine entity
+                    # managers, this option defines which one to use
+                    # manager_name: 'customer'
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: users_in_memory
-            custom_authenticators: [App\Security\LoginForm]
+            provider: app_user_provider
+            custom_authenticators: [App\Security\LoginFormAuthenticator]
+            logout:
+              path: app_logout
+            remember_me:
+              secret: '%kernel.secret%'
+              lifetime: 604800 # 1 week in seconds
+              path: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

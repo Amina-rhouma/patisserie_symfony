@@ -3,10 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cake;
-use App\Repository\CakeRepository;
-use App\Repository\VerrineRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Repository\RepositoryFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -30,7 +27,8 @@ class CakeController extends AbstractController
 
         return $this->render("product/product.html.twig", [
             'product' => $cake,
-            'imageFolder' => $this->imageFolder
+            'imageFolder' => $this->imageFolder,
+            'type' => CartController::CAKE
         ]);
     }
 
@@ -63,7 +61,7 @@ class CakeController extends AbstractController
         ;
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
+        if ($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
             /** @var UploadedFile $file */

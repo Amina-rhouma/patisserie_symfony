@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}login{% endblock %}
+
+{% block body %}
+    <h1>Mon compte </h1>
+    <h2>Vous avez déjà un compte Mina Hooma ?</h2>
+    <form method="POST" action="">
+        <div class="">
+            <label for="email">Email :</label>
+            <input type="email" name="email" class="" id="email"  placeholder="email" required autofocus/>
+        </div>
+        <div class="">
+            <label for="">Mot de passe :</label>
+            <input type="password" name="password"  class="" id=""  required/>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('login_form') }}" />
+        <div class="form-group">
+            <input type="submit" name="" value="Connecter" class="btn btn-primary" />
+        </div>
+        <div>
+            <label for="_remember_me">
+                <input type="checkbox" name="_remember_me" id="_remember_me">
+                Garder ma session active !
+            </label>
+        </div>
+    </form>
+    <p>* Ces champs sont requis. </p>
+    <h2>Nouveau client</h2>
+    <p>Créez un compte en quelques secondes pour profiter pleinement du site Mina Hooma</p>
+    <a href="{{ path('app_subscribe') }}">Créer un compte</a>
+
+{% endblock %}
