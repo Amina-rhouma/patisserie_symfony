@@ -3,6 +3,53 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <h1>Mon panier</h1>
+    {% if panier["cake"] | length > 0 or panier["verrine"] | length > 0  %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in panier["cake"] %}
+                <tr>
+                    <td><img src="{{ asset(imageFolder ~ item.product.image) }}" class="image-produit">{{ item.product.title }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.product.price * item.quantity }}</td>
+                    <td>
+                        <a href="{{ path("cart_delete", {"id": item.product.id, "type": "cake"}) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% for item in panier["verrine"] %}
+                <tr>
+                    <td><img src="{{ asset(imageFolder ~ item.product.image) }}" class="image-produit">{{ item.product.title }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.product.price * item.quantity }}</td>
+                    <td>
+                        <a href="{{ path("cart_delete", {"id": item.product.id, "type": "verrine"}) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total :</td>
+                <td>{{ total }}</td>
+                <td></td>
+            </tr>
+            </tfoot>
+        </table>
+    {% else %}
+        <p>Votre panier est vide !</p>
+    {% endif %}
 
 
 {% endblock %}

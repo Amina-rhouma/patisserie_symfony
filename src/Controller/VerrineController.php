@@ -22,7 +22,8 @@ class VerrineController extends AbstractController
 
         return $this->render("product/product.html.twig", [
             'product' => $verrine,
-            'imageFolder' => $this->imageFolder
+            'imageFolder' => $this->imageFolder,
+            'type' => CartController::VERRINE
         ]);
     }
 

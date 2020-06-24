@@ -13,6 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
+    private $imageFolder = "images/produits/";
+
     const CART_NAME = "panier";
     const CART_TYPE_NAME = "type";
     const CAKE = "cake";
@@ -56,9 +58,23 @@ class CartController extends AbstractController
         $panierWithData[self::CAKE] = $panierCakeWithData;
         $panierWithData[self::VERRINE] = $panierVerrineWithData;
 
-        dd($panierWithData);
+        //dd($panierWithData);
 
-        return $this->render("cart/panier.html.twig", ["panier" => $panierWithData]);
+        $total = 0;
+
+        foreach ($panierCakeWithData as $item) {
+            $total += $item["product"]->getPrice() * $item["quantity"];
+        }
+
+        foreach ($panierVerrineWithData as $item) {
+            $total += $item["product"]->getPrice() * $item["quantity"];
+        }
+
+        return $this->render("cart/panier.html.twig", [
+            "panier" => $panierWithData,
+            "total" => $total,
+            "imageFolder" => $this->imageFolder
+        ]);
     }
 
     /**
@@ -97,6 +113,33 @@ class CartController extends AbstractController
 
         $panier[$type] = $typePanier;
         $session->set(self::CART_NAME, $panier);
+    }
+
+    /**
+     * @ROUTE("panier/supprimer/{id}", name="cart_delete")
+     */
+    public function delete($id, Request $request, SessionInterface $session) {
+        $type = $request->query->get(self::CART_TYPE_NAME);
+
+        if ($type === self::CAKE || $type === self::VERRINE) {
+            $this->deleteProductFromCart($id, $type, $session);
+        } else {
+            dd("erreur");
+        }
+        return $this->redirectToRoute("app_panier");
+
+    }
+
+    private function deleteProductFromCart(int $id, string $type, SessionInterface $session) {
+        $panier = $session->get(
+            self::CART_NAME,
+            self::EMPTY_CART
+        );
+
+        if (!empty($panier[$type][$id])) {
+            unset($panier[$type][$id]);
+            $session->set(self::CART_NAME, $panier);
+        }
     }
 }
 
