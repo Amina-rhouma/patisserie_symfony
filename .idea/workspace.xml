@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c166dcf3-f05d-41d6-8f48-4622e216f0ca" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CakeController.php" afterPath="$PROJECT_DIR$/src/Controller/CakeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CartController.php" afterPath="$PROJECT_DIR$/src/Controller/CartController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/VerrineController.php" afterPath="$PROJECT_DIR$/src/Controller/VerrineController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/cart/panier.html.twig" afterPath="$PROJECT_DIR$/templates/cart/panier.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,10 +36,25 @@
       <file leaf-file-name="CartController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/CartController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="886">
-              <caret line="125" column="16" lean-forward="true" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
+            <state relative-caret-position="513">
+              <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
               <folding>
-                <element signature="e#36#70#0#PHP" expanded="true" />
+                <element signature="e#36#64#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CakeController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/CakeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="31" column="39" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="39" />
+              <folding>
+                <element signature="e#34#54#0#PHP" expanded="true" />
+                <element signature="e#1289#1657#0#PHP" expanded="false" />
+                <element signature="e#1770#3396#0#PHP" expanded="false" />
+                <element signature="e#3516#5392#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -86,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Entity/Verrine.php" />
         <option value="$PROJECT_DIR$/templates/product/productVerrineList.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Product.php" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
@@ -132,11 +146,12 @@
         <option value="$PROJECT_DIR$/config/packages/easy_admin.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/PannierController.php" />
         <option value="$PROJECT_DIR$/templates/header.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/CakeController.php" />
         <option value="$PROJECT_DIR$/templates/product/product.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/VerrineController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/CartController.php" />
         <option value="$PROJECT_DIR$/templates/cart/panier.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/CakeController.php" />
+        <option value="$PROJECT_DIR$/src/Service/CartService.php" />
+        <option value="$PROJECT_DIR$/src/Controller/CartController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/VerrineController.php" />
       </list>
     </option>
   </component>
@@ -207,7 +222,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -281,6 +296,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="patisserie_symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="patisserie_symfony" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -390,7 +423,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -517,24 +550,25 @@
       <workItem from="1592863232509" duration="862000" />
       <workItem from="1592911252114" duration="3255000" />
       <workItem from="1592935988478" duration="8022000" />
-      <workItem from="1593022468791" duration="5634000" />
+      <workItem from="1593022468791" duration="5828000" />
+      <workItem from="1593078221899" duration="3115000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150220000" />
+    <option name="totallyTimeSpent" value="153529000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="958" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22832723" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23076923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290993" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41224018" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41224018" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -579,13 +613,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/security-http/Authenticator/Passport/Credentials/PasswordCredentials.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-193">
-          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/security-http/Authenticator/Passport/Passport.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="472">
@@ -698,14 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/date_c.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -797,7 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
           <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,31 +907,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/VerrineController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CakeListController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/CakeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="101" column="42" lean-forward="false" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
-          <folding>
-            <element signature="e#1263#1631#0#PHP" expanded="false" />
-            <element signature="e#1744#3370#0#PHP" expanded="false" />
-            <element signature="e#3490#5366#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -925,12 +923,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding>
+            <element signature="e#31#65#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/CakeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="31" column="39" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="39" />
+          <folding>
+            <element signature="e#34#54#0#PHP" expanded="true" />
+            <element signature="e#1289#1657#0#PHP" expanded="false" />
+            <element signature="e#1770#3396#0#PHP" expanded="false" />
+            <element signature="e#3516#5392#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/CartService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <folding>
+            <element signature="e#31#65#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CartController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="886">
-          <caret line="125" column="16" lean-forward="true" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
+        <state relative-caret-position="513">
+          <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
           <folding>
-            <element signature="e#36#70#0#PHP" expanded="true" />
+            <element signature="e#36#64#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/VerrineController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+          <folding>
+            <element signature="e#34#71#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

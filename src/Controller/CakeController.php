@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cake;
+use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -28,7 +29,7 @@ class CakeController extends AbstractController
         return $this->render("product/product.html.twig", [
             'product' => $cake,
             'imageFolder' => $this->imageFolder,
-            'type' => CartController::CAKE
+            'type' => CartService::CAKE
         ]);
     }
 
