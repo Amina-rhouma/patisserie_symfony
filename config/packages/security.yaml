@@ -3,6 +3,10 @@ security:
         App\Entity\User:
             algorithm: auto
 
+    access_decision_manager:
+        strategy: unanimous
+        allow_if_all_abstain: false
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
             app_user_provider:
@@ -40,3 +44,4 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+

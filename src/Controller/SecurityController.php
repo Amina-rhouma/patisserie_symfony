@@ -84,8 +84,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/connecter", name="app_signin", methods={"GET", "POST"})
      */
-    public function signin(): Response
-    {
+    public function signin(): Response {
         return $this->render('security/signin.html.twig');
     }
     /**

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cake;
+use App\Security\ProductAuthorization;
 use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,7 +26,6 @@ class CakeController extends AbstractController
      * @Route("/produits/gateaux/{id<\d+>}", methods="get", name="productGateau")
      */
     public function showCake(Cake $cake) {
-
         return $this->render("product/product.html.twig", [
             'product' => $cake,
             'imageFolder' => $this->imageFolder,
@@ -37,6 +37,7 @@ class CakeController extends AbstractController
      * @Route("/produits/gateaux/{id<\d+>}", methods="delete", name="deleteGateau")
      */
     public function deleteCake(Cake $cake, EntityManagerInterface $em): Response {
+        $this->denyAccessUnlessGranted(ProductAuthorization::DELETE, $cake);
 
         try {
             $em->remove($cake);
@@ -51,8 +52,9 @@ class CakeController extends AbstractController
     /**
      * @Route("/produits/gateaux/ajouter", name="ajouterProduit", methods={"GET", "POST"})
      */
-    public function addCake(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response
-    {
+    public function addCake(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response {
+        $this->denyAccessUnlessGranted(ProductAuthorization::ADD_PRODUCT);
+
         $form = $this->createFormBuilder()
             ->add('title', TextType::class, ['label' => 'Titre'])
             ->add('description', TextareaType::class, ['label' => 'Description'])
@@ -101,6 +103,8 @@ class CakeController extends AbstractController
      * @Route("/produits/gateaux/{id<\d+>}/modifier", methods={"GET", "POST"}, name="updateCake")
      */
     public function updateCake(Cake $cake, Request $request, EntityManagerInterface $em, SluggerInterface $slugger) {
+        $this->denyAccessUnlessGranted(ProductAuthorization::EDIT_PRODUCT, $cake);
+
         $form = $this->createFormBuilder()
             ->add('title', TextType::class, ['data' => $cake->getTitle()])
             ->add('description', TextareaType::class, [

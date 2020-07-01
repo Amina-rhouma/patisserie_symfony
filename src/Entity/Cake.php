@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CakeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,11 +40,17 @@ class Cake
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CakeLike::class, mappedBy="cake")
+     */
+    private $likes;
+
     public function __construct(string $title, float $price, string $description, string $image) {
         $this->setTitle($title);
         $this->setPrice($price);
         $this->setDescription($description);
         $this->setImage($image);
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +102,37 @@ class Cake
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CakeLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(CakeLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setCake($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(CakeLike $like): self
+    {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
+            // set the owning side to null (unless already changed)
+            if ($like->getCake() === $this) {
+                $like->setCake(null);
+            }
+        }
 
         return $this;
     }
