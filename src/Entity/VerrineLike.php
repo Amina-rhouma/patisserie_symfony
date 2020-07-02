@@ -28,6 +28,11 @@ class VerrineLike
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $rating;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +58,28 @@ class VerrineLike
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function __get($prop)
+    {
+        return $this->$prop;
+    }
+
+    public function __isset($prop) : bool
+    {
+        return isset($this->$prop);
+    }
+
+    public function getRating(): ?int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(int $rating): self
+    {
+        $this->rating = $rating;
 
         return $this;
     }

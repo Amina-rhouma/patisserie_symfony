@@ -31,16 +31,16 @@ class LikeService {
 
     }
 
-    public function like(int $productId, string $type) {
+    public function like(int $productId, string $type, int $rating) {
         if ($type === Cake::TYPE) {
-            return $this->likeCake($productId);
+            return $this->likeCake($productId, $rating);
         } else if ($type === Verrine::TYPE) {
-            return $this->likeVerrine($productId);
+            return $this->likeVerrine($productId, $rating);
         }
         return false;
     }
 
-    private function likeCake(int $cakeId) {
+    private function likeCake(int $cakeId, int $rating) {
         try {
             $user = $this->security->getUser();
             $cake = $this->cakeRepository->find($cakeId);
@@ -52,6 +52,7 @@ class LikeService {
                 $cakeLike = new CakeLike();
                 $cakeLike->setCake($cake);
                 $cakeLike->setUser($user);
+                $cakeLike->setRating($rating);
 
                 $this->em->persist($cakeLike);
                 $this->em->flush();
@@ -62,7 +63,7 @@ class LikeService {
         }
     }
 
-    private function likeVerrine(int $verrineId) {
+    private function likeVerrine(int $verrineId, int $rating) {
         try {
             $user = $this->security->getUser();
             $verrine = $this->verrineRepository->find($verrineId);
@@ -74,6 +75,7 @@ class LikeService {
                 $verrineLike = new VerrineLike();
                 $verrineLike->setVerrine($verrine);
                 $verrineLike->setUser($user);
+                $verrineLike->setRating($rating);
 
                 $this->em->persist($verrineLike);
                 $this->em->flush();

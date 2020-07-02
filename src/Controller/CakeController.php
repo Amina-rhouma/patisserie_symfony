@@ -25,11 +25,26 @@ class CakeController extends AbstractController
      * @Route("/produits/gateaux/{id<\d+>}", methods="get", name="productGateau")
      */
     public function showCake(Cake $cake) {
+        $likes = $cake->getLikes()->getValues();
+
+        if (isset($likes) && ($likesNumber = count($likes)) > 0) {
+
+            $sumRatings = 0;
+
+            foreach ($likes as $like) {
+                $sumRatings = $sumRatings + $like->getRating();
+            }
+
+            $avgRatings = $sumRatings / $likesNumber;
+
+        } else {
+            $avgRatings = 0;
+        }
         return $this->render("product/product.html.twig", [
             'product' => $cake,
             'imageFolder' => $this->imageFolder,
             'type' => Cake::TYPE,
-            'likes' => count($cake->getLikes())
+            'likes' => $avgRatings
         ]);
     }
 

@@ -28,6 +28,11 @@ class CakeLike
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $rating;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -65,5 +70,17 @@ class CakeLike
     public function __isset($prop) : bool
     {
         return isset($this->$prop);
+    }
+
+    public function getRating(): ?int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(int $rating): self
+    {
+        $this->rating = $rating;
+
+        return $this;
     }
 }

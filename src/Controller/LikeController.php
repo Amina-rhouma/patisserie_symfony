@@ -19,8 +19,9 @@ class LikeController extends AbstractController {
         $data = json_decode($request->getContent(), true);
         $productId = $data['id_product'];
         $type = $data['type_product'];
+        $rating = $data['rating'];
 
-        $likePersisted = $likeService->like($productId, $type);
+        $likePersisted = $likeService->like($productId, $type, $rating);
 
         if ($likePersisted) {
             return $this->json("{ message: 'liked' }", 200);
