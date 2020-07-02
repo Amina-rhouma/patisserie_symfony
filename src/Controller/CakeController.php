@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Cake;
 use App\Security\ProductAuthorization;
-use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -29,7 +28,8 @@ class CakeController extends AbstractController
         return $this->render("product/product.html.twig", [
             'product' => $cake,
             'imageFolder' => $this->imageFolder,
-            'type' => CartService::CAKE
+            'type' => Cake::TYPE,
+            'likes' => count($cake->getLikes())
         ]);
     }
 

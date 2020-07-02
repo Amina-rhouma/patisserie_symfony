@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use App\Entity\Cake;
+use App\Entity\Verrine;
 use App\Repository\CakeRepository;
 use App\Repository\VerrineRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -10,12 +12,9 @@ class CartService
 {
     public const CART_NAME = "panier";
     public const EMPTY_CART = [
-        self::CAKE => [],
-        self::VERRINE => []
+        Cake::TYPE => [],
+        Verrine::TYPE => []
     ];
-
-    public const CAKE = "cake";
-    public const VERRINE = "verrine";
 
     protected $session;
     protected $cakeRepository;
@@ -41,11 +40,11 @@ class CartService
         $panier = $this->getPanier();
 
         switch($type) {
-            case self::CAKE:
-                $this->addToCartByType($panier, $id, self::CAKE);
+            case Cake::TYPE:
+                $this->addToCartByType($panier, $id, Cake::TYPE);
                 break;
-            case self::VERRINE:
-                $this->addToCartByType($panier, $id, self::VERRINE);
+            case Verrine::TYPE:
+                $this->addToCartByType($panier, $id, Verrine::TYPE);
                 break;
             default:
                 dd("erreur");
@@ -67,7 +66,7 @@ class CartService
 
     public function deleteProductFromCart(int $id, string $type)
     {
-        if ($type === self::CAKE || $type === self::VERRINE) {
+        if ($type === Cake::TYPE || $type === Verrine::TYPE) {
             $panier = $this->getPanier();
 
             if (!empty($panier[$type][$id])) {
@@ -84,8 +83,8 @@ class CartService
     {
         $total = 0;
 
-        $panierCakeWithData = $panierWithData[self::CAKE];
-        $panierVerrineWithData = $panierWithData[self::VERRINE];
+        $panierCakeWithData = $panierWithData[Cake::TYPE];
+        $panierVerrineWithData = $panierWithData[Verrine::TYPE];
 
         foreach ($panierCakeWithData as $item) {
             $total += $item["product"]->getPrice() * $item["quantity"];
@@ -106,7 +105,7 @@ class CartService
         $panierCakeWithData = [];
         $panierVerrineWithData = [];
 
-        foreach ($panier[self::CAKE] as $id => $quantity) {
+        foreach ($panier[Cake::TYPE] as $id => $quantity) {
             $cakeData = $this->cakeRepository->find($id);
             $panierCakeWithData[] = [
                 "product" => $cakeData,
@@ -114,7 +113,7 @@ class CartService
             ];
         }
 
-        foreach ($panier[self::VERRINE] as $id => $quantity) {
+        foreach ($panier[Verrine::TYPE] as $id => $quantity) {
             $verrineData = $this->verrineRepository->find($id);
             $panierVerrineWithData[] = [
                 "product" => $verrineData,
@@ -123,8 +122,8 @@ class CartService
             ];
         }
 
-        $panierWithData[self::CAKE] = $panierCakeWithData;
-        $panierWithData[self::VERRINE] = $panierVerrineWithData;
+        $panierWithData[Cake::TYPE] = $panierCakeWithData;
+        $panierWithData[Verrine::TYPE] = $panierVerrineWithData;
 
         return $panierWithData;
     }

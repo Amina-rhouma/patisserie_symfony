@@ -11,11 +11,9 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;
 
-class ProductAuthorization extends Voter
+class CartAuthorization extends Voter
 {
-    public const ADD_PRODUCT = 'add_product';
-    public const EDIT_PRODUCT = 'edit_product';
-    public const DELETE = 'delete';
+    public const VIEW_CART = 'view_cart';
 
     private $security;
 
@@ -35,17 +33,7 @@ class ProductAuthorization extends Voter
     protected function supports(string $attribute, $subject) {
 
         // Gerer les cas pour ajouter un produit => pas besoin de verifier $subject car pas encore existant
-        if ($attribute === self::ADD_PRODUCT) {
-            return true;
-        }
-
-        // Gerer les cas pour modifier/supprimer un produit
-        // => verifier $subject car on en a besoin pour l'action modifier ou supprimer
-        $correctAttribute = $attribute == self::EDIT_PRODUCT;
-
-        $correctType = ($subject instanceof Cake || $subject instanceof Verrine);
-
-        if ($correctAttribute && $correctType) {
+        if ($attribute === self::VIEW_CART) {
             return true;
         }
 
@@ -68,10 +56,10 @@ class ProductAuthorization extends Voter
             return false;
         }
 
-        if (in_array($attribute, [self::ADD_PRODUCT, self::EDIT_PRODUCT, self::DELETE])) {
-            return in_array("ROLE_ADMIN", $token->getRoleNames());
+        if (in_array("ROLE_USER", $token->getRoleNames())) {
+            return true;
         }
 
-        throw new \LogicException('This code should not be reached!');
+        return false;
     }
 }

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CakeLikeRepository::class)
+ * @ORM\Table(name="cake_like")
  */
 class CakeLike
 {
@@ -54,5 +55,15 @@ class CakeLike
         $this->user = $user;
 
         return $this;
+    }
+
+    public function __get($prop)
+    {
+        return $this->$prop;
+    }
+
+    public function __isset($prop) : bool
+    {
+        return isset($this->$prop);
     }
 }

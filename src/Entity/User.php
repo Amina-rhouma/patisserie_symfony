@@ -71,9 +71,15 @@ class User implements UserInterface
      */
     private $likes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=VerrineLike::class, mappedBy="user")
+     */
+    private $verrineLikes;
+
     public function __construct()
     {
         $this->likes = new ArrayCollection();
+        $this->verrineLikes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -241,5 +247,46 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|VerrineLike[]
+     */
+    public function getVerrineLikes(): Collection
+    {
+        return $this->verrineLikes;
+    }
+
+    public function addVerrineLike(VerrineLike $verrineLike): self
+    {
+        if (!$this->verrineLikes->contains($verrineLike)) {
+            $this->verrineLikes[] = $verrineLike;
+            $verrineLike->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVerrineLike(VerrineLike $verrineLike): self
+    {
+        if ($this->verrineLikes->contains($verrineLike)) {
+            $this->verrineLikes->removeElement($verrineLike);
+            // set the owning side to null (unless already changed)
+            if ($verrineLike->getUser() === $this) {
+                $verrineLike->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __get($prop)
+    {
+        return $this->$prop;
+    }
+
+    public function __isset($prop) : bool
+    {
+        return isset($this->$prop);
     }
 }

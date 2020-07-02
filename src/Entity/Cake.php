@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Cake
 {
+
+    public const TYPE = "CAKE";
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -135,5 +137,17 @@ class Cake
         }
 
         return $this;
+    }
+
+    /**
+     * permet de savoir si cake est liké par un utilisateur
+     * @param User $user
+     * @return boolean
+     */
+    public function isLikedByUser(User $user): bool {
+        foreach ($this->likes as $like) {
+            if($like->getUser() === $user) return true;
+        }
+        return false;
     }
 }

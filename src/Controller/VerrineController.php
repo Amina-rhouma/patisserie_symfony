@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Verrine;
 use App\Repository\VerrineRepository;
-use App\Service\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,7 +24,8 @@ class VerrineController extends AbstractController
         return $this->render("product/product.html.twig", [
             'product' => $verrine,
             'imageFolder' => $this->imageFolder,
-            'type' => CartService::VERRINE
+            'type' => Verrine::TYPE,
+            'likes' => count($verrine->getLikes())
         ]);
     }
 

@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Controller;
 
-
-use App\Security\ProductAuthorization;
+use App\Security\CartAuthorization;
 use App\Service\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +18,7 @@ class CartController extends AbstractController
      * @Route("/panier", name="app_panier")
      */
     public function showPanier(CartService $cartService) {
-        $this->denyAccessUnlessGranted(ProductAuthorization::VIEW_CART);
+        $this->denyAccessUnlessGranted(CartAuthorization::VIEW_CART);
 
         $panierWithData = $cartService->getPanierWithData();
         $total = $cartService->getTotal($panierWithData);
@@ -36,7 +34,7 @@ class CartController extends AbstractController
      * @Route("/panier/add/{id}", name="app_add_panier")
      */
     public function add(int $id, Request $request, CartService $cartService) {
-        $this->denyAccessUnlessGranted(ProductAuthorization::VIEW_CART);
+        $this->denyAccessUnlessGranted(CartAuthorization::VIEW_CART);
 
         $type = $request->query->get(self::CART_TYPE_NAME);
         $cartService->addToCart($id, $type);
