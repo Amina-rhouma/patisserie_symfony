@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Cake;
 use App\Security\ProductAuthorization;
+use App\Service\RatingService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -20,31 +21,39 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class CakeController extends AbstractController
 {
     private $imageFolder = "images/produits/";
+    private $iconsFolder = "images/icons/";
+
+    private $ratingService;
+
+    public function __construct(RatingService $ratingService)
+    {
+        $this->ratingService = $ratingService;
+    }
 
     /**
      * @Route("/produits/gateaux/{id<\d+>}", methods="get", name="productGateau")
      */
     public function showCake(Cake $cake) {
         $likes = $cake->getLikes()->getValues();
+        $likesNumber = count($likes);
 
-        if (isset($likes) && ($likesNumber = count($likes)) > 0) {
-
+        if (isset($likes) && $likesNumber > 0) {
             $sumRatings = 0;
-
             foreach ($likes as $like) {
                 $sumRatings = $sumRatings + $like->getRating();
             }
-
             $avgRatings = $sumRatings / $likesNumber;
-
         } else {
             $avgRatings = 0;
         }
         return $this->render("product/product.html.twig", [
             'product' => $cake,
             'imageFolder' => $this->imageFolder,
+            'iconsFolder' => $this->iconsFolder,
             'type' => Cake::TYPE,
-            'likes' => $avgRatings
+            'likes' => $avgRatings,
+            'ratings' => $this->ratingService->getStarsRepartition($avgRatings),
+            'numRatings' => $likesNumber
         ]);
     }
 
