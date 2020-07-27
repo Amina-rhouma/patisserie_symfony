@@ -28,7 +28,6 @@ class LikeController extends AbstractController {
         } else {
             return $this->json("{ message: 'error' }", 500);
         }
-
     }
 
     /**

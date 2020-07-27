@@ -48,7 +48,16 @@ class LikeService {
 
             $allUsersThatLikedThisCake = array_column($allPreviousLikes, "user");
 
-            if (!in_array($user, $allUsersThatLikedThisCake)) {
+            if (in_array($user, $allUsersThatLikedThisCake)) {
+                foreach ($allPreviousLikes as $cakeLike) {
+                    if ($cakeLike->getUser() === $user) {
+                        $cakeLike->setRating($rating);
+                        $this->em->persist($cakeLike);
+                        $this->em->flush();
+                        break;
+                    }
+                }
+            } else {
                 $cakeLike = new CakeLike();
                 $cakeLike->setCake($cake);
                 $cakeLike->setUser($user);
