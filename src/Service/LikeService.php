@@ -44,7 +44,7 @@ class LikeService {
         try {
             $user = $this->security->getUser();
             $cake = $this->cakeRepository->find($cakeId);
-            $allPreviousLikes = $cake->getLikes()->getValues();
+            $allPreviousLikes = $cake->getLikes()->getValues(); // 50
 
             $allUsersThatLikedThisCake = array_column($allPreviousLikes, "user");
 
@@ -66,9 +66,14 @@ class LikeService {
                 $this->em->persist($cakeLike);
                 $this->em->flush();
             }
-            return true;
+
+            $cake = $this->cakeRepository->find($cakeId);
+            $allNewLikes = $cake->getLikes()->getValues();
+            $newAvgRatings = $this->calculateAvgRatings($allNewLikes);
+
+            return $newAvgRatings;
         } catch (Exception $e) {
-            return false;
+            return -1;
         }
     }
 
@@ -140,6 +145,21 @@ class LikeService {
             return true;
         } catch (Exception $e) {
             return false;
+        }
+    }
+
+    private function calculateAvgRatings($likes) {
+        $likesNumber = count($likes);
+
+        if (isset($likes) && $likesNumber > 0) {
+            $sumRatings = 0;
+            foreach ($likes as $like) {
+                $sumRatings = $sumRatings + $like->getRating();
+            }
+            $avgRatings = $sumRatings / $likesNumber;
+            return $avgRatings;
+        } else {
+            return 0;
         }
     }
 }

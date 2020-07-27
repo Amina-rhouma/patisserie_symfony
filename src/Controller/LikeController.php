@@ -21,12 +21,12 @@ class LikeController extends AbstractController {
         $type = $data['type_product'];
         $rating = $data['rating'];
 
-        $likePersisted = $likeService->like($productId, $type, $rating);
+        $newAvgRating = $likeService->like($productId, $type, $rating);
 
-        if ($likePersisted) {
-            return $this->json("{ message: 'liked' }", 200);
+        if ($newAvgRating >= 0) {
+            return $this->json('{ "message": "ok", "newRating": "' . $newAvgRating . '" }', 200);
         } else {
-            return $this->json("{ message: 'error' }", 500);
+            return $this->json('{ "message": "error" }', 500);
         }
     }
 

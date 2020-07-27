@@ -23,13 +23,6 @@ class CakeController extends AbstractController
     private $imageFolder = "images/produits/";
     private $iconsFolder = "images/icons/";
 
-    private $ratingService;
-
-    public function __construct(RatingService $ratingService)
-    {
-        $this->ratingService = $ratingService;
-    }
-
     /**
      * @Route("/produits/gateaux/{id<\d+>}", methods="get", name="productGateau")
      */
@@ -51,8 +44,7 @@ class CakeController extends AbstractController
             'imageFolder' => $this->imageFolder,
             'iconsFolder' => $this->iconsFolder,
             'type' => Cake::TYPE,
-            'likes' => $avgRatings,
-            'ratings' => $this->ratingService->getStarsRepartition($avgRatings),
+            'avgRatings' => $avgRatings,
             'numRatings' => $likesNumber
         ]);
     }
