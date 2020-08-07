@@ -22,10 +22,6 @@ class VerrineListController extends AbstractController
      */
     public function showVerrineList(VerrineRepository $repo): Response
     {
-       // $v2 = new Verrine("Bouza", "4", "Une délicieuse crème faite à base de noisettes, ", "bouza.jpg");
-        //$this->em->persist($v2);
-       // $this->em->flush();
-
         $data = $repo->findAll();
 
         return $this->render("product/verrineList.html.twig", [

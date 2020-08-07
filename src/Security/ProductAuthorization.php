@@ -15,7 +15,7 @@ class ProductAuthorization extends Voter
 {
     public const ADD_PRODUCT = 'add_product';
     public const EDIT_PRODUCT = 'edit_product';
-    public const DELETE = 'delete';
+    public const DELETE_PRODUCT = 'delete_product';
 
     private $security;
 
@@ -41,7 +41,7 @@ class ProductAuthorization extends Voter
 
         // Gerer les cas pour modifier/supprimer un produit
         // => verifier $subject car on en a besoin pour l'action modifier ou supprimer
-        $correctAttribute = $attribute == self::EDIT_PRODUCT;
+        $correctAttribute = ($attribute == self::EDIT_PRODUCT || $attribute == self::DELETE_PRODUCT);
 
         $correctType = ($subject instanceof Cake || $subject instanceof Verrine);
 
@@ -68,7 +68,7 @@ class ProductAuthorization extends Voter
             return false;
         }
 
-        if (in_array($attribute, [self::ADD_PRODUCT, self::EDIT_PRODUCT, self::DELETE])) {
+        if (in_array($attribute, [self::ADD_PRODUCT, self::EDIT_PRODUCT, self::DELETE_PRODUCT])) {
             return in_array("ROLE_ADMIN", $token->getRoleNames());
         }
 

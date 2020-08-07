@@ -52,7 +52,7 @@ class CakeController extends AbstractController
      * @Route("/produits/gateaux/{id<\d+>}", methods="delete", name="deleteGateau")
      */
     public function deleteCake(Cake $cake, EntityManagerInterface $em): Response {
-        $this->denyAccessUnlessGranted(ProductAuthorization::DELETE, $cake);
+        $this->denyAccessUnlessGranted(ProductAuthorization::DELETE_PRODUCT, $cake);
 
         try {
             $em->remove($cake);

@@ -97,11 +97,12 @@ class VerrineController extends AbstractController
             'monFormulaire'=> $form->createView()
         ]);
     }
+
     /**
      * @Route("/produits/verrines/{id<\d+>}", methods="delete", name="deleteVerrine")
      */
     public function deleteVerrine(Verrine $verrine, EntityManagerInterface $em): Response {
-        $this->denyAccessUnlessGranted(ProductAuthorization::DELETE, $verrine);
+        $this->denyAccessUnlessGranted(ProductAuthorization::DELETE_PRODUCT, $verrine);
 
         try {
             $em->remove($verrine);
@@ -112,6 +113,7 @@ class VerrineController extends AbstractController
 
         return new Response('', Response::HTTP_OK);
     }
+
     /**
      * @Route("/produits/verrines/{id<\d+>}/modifier", methods={"GET", "POST"}, name="updateVerrine")
      */
