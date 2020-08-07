@@ -10,3 +10,4 @@
 /perso
 /perso/*
 ###< symfony/framework-bundle ###
+.idea/
