@@ -97,6 +97,78 @@ class VerrineController extends AbstractController
             'monFormulaire'=> $form->createView()
         ]);
     }
+    /**
+     * @Route("/produits/verrines/{id<\d+>}", methods="delete", name="deleteVerrine")
+     */
+    public function deleteVerrine(Verrine $verrine, EntityManagerInterface $em): Response {
+        $this->denyAccessUnlessGranted(ProductAuthorization::DELETE, $verrine);
+
+        try {
+            $em->remove($verrine);
+            $em->flush();
+        } catch(\Doctrine\ORM\ORMException $exception) {
+            return new Response('Could not delete this object', Response::HTTP_NOT_FOUND);
+        }
+
+        return new Response('', Response::HTTP_OK);
+    }
+    /**
+     * @Route("/produits/verrines/{id<\d+>}/modifier", methods={"GET", "POST"}, name="updateVerrine")
+     */
+    public function updateVerrine(Verrine $verrine, Request $request, EntityManagerInterface $em, SluggerInterface $slugger) {
+        $this->denyAccessUnlessGranted(ProductAuthorization::EDIT_PRODUCT, $verrine);
+
+        $form = $this->createFormBuilder()
+            ->add('title', TextType::class, ['data' => $verrine->getTitle()])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description',
+                'data' => $verrine->getDescription()
+            ])
+            ->add('price', NumberType::class, [
+                'label' => 'Prix',
+                'data' => $verrine->getPrice()
+            ])
+            ->add('image', FileType::class, ['label' => 'Image'])
+            ->getForm()
+        ;
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            /** @var UploadedFile $file */
+            $file = $data['image'];
+            $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+            try {
+                $file->move(
+                    $this->getParameter('images_folder'),
+                    $newFilename
+                );
+            } catch (FileException $e) {
+                dd($e);
+            }
+
+            $verrine->setTitle($data['title']);
+            $verrine->setPrice($data['price']);
+            $verrine->setDescription($data['description']);
+            $verrine->setImage($newFilename);
+
+            $em->flush();
+
+            return $this->redirectToRoute("productGateau", ['id' => $verrine->getId()]);
+
+        }
+
+        return $this->render("product/productUpdateForm.html.twig",[
+            'monFormulaire'=> $form->createView(),
+            'imageFolder' => $this->imageFolder,
+            'oldImage' => $verrine->getImage()
+        ]);
+    }
 
 
 }
