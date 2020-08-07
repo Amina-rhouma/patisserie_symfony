@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Cake;
 use App\Security\ProductAuthorization;
-use App\Service\RatingService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -66,7 +65,7 @@ class CakeController extends AbstractController
     }
 
     /**
-     * @Route("/produits/gateaux/ajouter", name="ajouterProduit", methods={"GET", "POST"})
+     * @Route("/produits/gateaux/ajouter", name="ajouterGateau", methods={"GET", "POST"})
      */
     public function addCake(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response {
         $this->denyAccessUnlessGranted(ProductAuthorization::ADD_PRODUCT);

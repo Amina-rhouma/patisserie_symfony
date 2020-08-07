@@ -37,7 +37,7 @@ class LikeService {
         } else if ($type === Verrine::TYPE) {
             return $this->likeVerrine($productId, $rating);
         }
-        return false;
+        return -1;
     }
 
     private function likeCake(int $cakeId, int $rating) {
@@ -85,7 +85,16 @@ class LikeService {
 
             $allUsersThatLikedThisVerrine = array_column($allPreviousLikes, "user");
 
-            if (!in_array($user, $allUsersThatLikedThisVerrine)) {
+            if (in_array($user, $allUsersThatLikedThisVerrine)) {
+                foreach ($allPreviousLikes as $verrineLike) {
+                    if ($verrineLike->getUser() === $user) {
+                        $verrineLike->setRating($rating);
+                        $this->em->persist($verrineLike);
+                        $this->em->flush();
+                        break;
+                    }
+                }
+            } else {
                 $verrineLike = new VerrineLike();
                 $verrineLike->setVerrine($verrine);
                 $verrineLike->setUser($user);
@@ -93,11 +102,16 @@ class LikeService {
 
                 $this->em->persist($verrineLike);
                 $this->em->flush();
+
             }
 
-            return true;
+            $verrine = $this->verrineRepository->find($verrineId);
+            $allNewLikes = $verrine->getLikes()->getValues();
+            $newAvgRatings = $this->calculateAvgRatings($allNewLikes);
+
+            return $newAvgRatings;
         } catch (Exception $e) {
-            return false;
+            return -1;
         }
     }
 
