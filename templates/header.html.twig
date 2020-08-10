@@ -6,10 +6,15 @@
         <li><a href="{{ path('showVerrineList') }}">Verrines</a></li>
         <li><a href="#">Formation</a></li>
         <li><a href="#">A propos</a></li>
-        <li><a href="{{ path('app_panier') }}"><i class="fas fa-shopping-cart"></i></a></li>
+
+        {% if not app.user or not ('ROLE_ADMIN' in app.user.getRoles()) %}
+            <li><a href="{{ path('app_panier') }}"><i class="fas fa-shopping-cart"></i></a></li>
+        {% endif %}
+
         {% if app.user and 'ROLE_ADMIN' in app.user.getRoles() %}
             <li><a href="{{ path('admin') }}">Espace admin</a></li>
         {% endif %}
+
         {% if app.user %}
             <li><a href="{{ path('app_logout') }}">Deconnection</a></li>
         {% else %}

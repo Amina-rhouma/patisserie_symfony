@@ -18,7 +18,9 @@ class CartController extends AbstractController
      * @Route("/panier", name="app_panier")
      */
     public function showPanier(CartService $cartService) {
-        $this->denyAccessUnlessGranted(CartAuthorization::VIEW_CART);
+        if ($this->getUser() !== null) {
+            $this->denyAccessUnlessGranted(CartAuthorization::VIEW_CART);
+        }
 
         $panierWithData = $cartService->getPanierWithData();
         $total = $cartService->getTotal($panierWithData);
