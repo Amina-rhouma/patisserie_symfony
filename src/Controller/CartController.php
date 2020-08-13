@@ -36,7 +36,9 @@ class CartController extends AbstractController
      * @Route("/panier/add/{id}", name="app_add_panier")
      */
     public function add(int $id, Request $request, CartService $cartService) {
-        $this->denyAccessUnlessGranted(CartAuthorization::VIEW_CART);
+        if ($this->getUser() !== null) {
+            $this->denyAccessUnlessGranted(CartAuthorization::VIEW_CART);
+        }
 
         $type = $request->query->get(self::CART_TYPE_NAME);
         $cartService->addToCart($id, $type);

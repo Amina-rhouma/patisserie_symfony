@@ -1,0 +1,69 @@
+section.mon-compte {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+section.mon-compte h2,
+section.mon-compte h3,
+section.mon-compte #connection input[type=submit],
+section.mon-compte #inscription a.button {
+  text-transform: uppercase;
+}
+
+section.mon-compte h2 {
+  color: darkred;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+section.mon-compte h3 {
+  font-weight: bold;
+}
+
+section.mon-compte #connection {
+  margin: 35px 0 75px 0;
+}
+
+section.mon-compte #connection form {
+  margin-top: 20px;
+}
+
+section.mon-compte #connection div.field {
+  display: flex;
+  align-items: baseline;
+  margin: 20px 0;
+}
+
+section.mon-compte #connection div.field label {
+  width: 120px;
+}
+
+section.mon-compte #connection div.field input {
+  flex-grow: 1;
+}
+
+section.mon-compte #connection input[type=submit],
+section.mon-compte #inscription a.button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 0;
+  background: black;
+  color: white;
+  border: none;
+  transition-duration: 0.5s;
+}
+
+section.mon-compte #connection input[type=submit]:hover,
+section.mon-compte #inscription a.button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  transition-duration: 0.5s;
+}
+
+section.mon-compte #inscription p {
+  margin: 20px 0;
+}

@@ -1,4 +1,9 @@
 {% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/subscribe.css') }}" />
+{% endblock %}
 
 {% block title %}Inscription{% endblock %}
 

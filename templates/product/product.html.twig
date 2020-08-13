@@ -18,19 +18,18 @@
             <div id="description">{{ product.description }}</div>
             <p id="price">Prix : <span>{{ product.price }} €</span></p>
             <a href="{{ path("app_add_panier", {"id": product.id, "type": type}) }}"><button>Ajouter au panier</button></a>
-            <p>{{ avgRatings }} ☆</p>
-
+            <div class="ratings">
+                {% for i in 1..5%}
+                    <img
+                            src="{{ asset(iconsFolder ~ "star-empty.svg") }}"
+                            data-rating="{{ i }}"
+                    />
+                {% endfor %}
+                <span>({{ numRatings }})</span>
+            </div>
         </div>
     </article>
-    <div class="ratings">
-        {% for i in 1..5%}
-            <img
-                src="{{ asset(iconsFolder ~ "star-empty.svg") }}"
-                data-rating="{{ i }}"
-            />
-        {% endfor %}
-        <span>({{ numRatings }})</span>
-    </div>
+
 {% endblock %}
 
 {% block javascripts %}
