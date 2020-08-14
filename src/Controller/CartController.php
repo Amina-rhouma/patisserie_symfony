@@ -42,7 +42,7 @@ class CartController extends AbstractController
 
         $type = $request->query->get(self::CART_TYPE_NAME);
         $cartService->addToCart($id, $type);
-        return $this->redirectToRoute("accueil");
+        return $this->redirectToRoute("app_home");
     }
 
 

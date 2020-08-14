@@ -1,23 +1,26 @@
 <header>
-    <a href="{{ path('accueil') }}"><h1>Mina Hooma</h1></a>
+    <ul class="top-menu">
+    {% if app.user %}
+        <li><a href="{{ path('app_logout') }}">Deconnection</a></li>
+    {% else %}
+        <li><a href="{{ path('app_signin') }}"><i class="fas fa-user"></i> Connexion</a></li>
+    {% endif %}
+
+    {% if app.user and 'ROLE_ADMIN' in app.user.getRoles() %}
+        <li><a href="{{ path('admin') }}">Espace admin</a></li>
+    {% endif %}
+
+    {% if not app.user or not ('ROLE_ADMIN' in app.user.getRoles()) %}
+        <li><a href="{{ path('app_panier') }}" class="icone-panier"><i class="fas fa-shopping-cart"></i> Panier</a></li>
+    {% endif %}
+    </ul>
+
+    <h1><a href="{{ path('app_home') }}">Mina Hooma</a></h1>
     <h2>patisserie</h2>
     <ul class="main-menu">
+        <li><a href="{{ path('app_home') }}">Accueil</a></li>
         <li><a href="{{ path('showCakeList') }}">Gateaux</a></li>
         <li><a href="{{ path('showVerrineList') }}">Verrines</a></li>
-        <li><a href="#">A propos</a></li>
-
-        {% if not app.user or not ('ROLE_ADMIN' in app.user.getRoles()) %}
-            <li><a href="{{ path('app_panier') }}"><i class="fas fa-shopping-cart"></i></a></li>
-        {% endif %}
-
-        {% if app.user and 'ROLE_ADMIN' in app.user.getRoles() %}
-            <li><a href="{{ path('admin') }}">Espace admin</a></li>
-        {% endif %}
-
-        {% if app.user %}
-            <li><a href="{{ path('app_logout') }}">Deconnection</a></li>
-        {% else %}
-            <li><a href="{{ path('app_signin') }}">Connexion <i class="fas fa-user"></i></a></li>
-        {% endif %}
+        <li><a href="#">À propos</a></li>
     </ul>
 </header>

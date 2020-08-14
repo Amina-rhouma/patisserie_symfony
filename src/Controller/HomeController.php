@@ -10,7 +10,7 @@ class HomeController extends AbstractController
     private $imageFolder = "images/slider/";
 
     /**
-     * @Route("/home", name="accueil", methods={"GET"})
+     * @Route("/", name="app_home", methods={"GET"})
      */
     public function index()
     {
