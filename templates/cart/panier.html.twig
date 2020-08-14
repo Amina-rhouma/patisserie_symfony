@@ -1,4 +1,9 @@
 {% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/panier.css') }}" />
+{% endblock %}
 
 {% set CAKE_TYPE = constant('App\\Entity\\Cake::TYPE') %}
 {% set VERRINE_TYPE = constant('App\\Entity\\Verrine::TYPE') %}
@@ -6,7 +11,7 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <h1>Mon panier</h1>
+    <h2>Mon panier</h2>
     {% if panier[CAKE_TYPE] | length > 0 or panier[VERRINE_TYPE] | length > 0  %}
         <table class="table">
             <thead>
@@ -15,16 +20,16 @@
                 <th>Prix</th>
                 <th>Quantité</th>
                 <th>Total</th>
-
+                <th></th>
             </tr>
             </thead>
             <tbody>
             {% for item in panier[CAKE_TYPE] %}
                 <tr>
-                    <td><img src="{{ asset(imageFolder ~ item.product.image) }}" class="image-produit">{{ item.product.title }}</td>
-                    <td>{{ item.product.price }}</td>
+                    <td  class="info-product"><img src="{{ asset(imageFolder ~ item.product.image) }}" class="image-produit"><span>{{ item.product.title }}</span></td>
+                    <td>{{ item.product.price }} €</td>
                     <td>{{ item.quantity }}</td>
-                    <td>{{ item.product.price * item.quantity }}</td>
+                    <td>{{ item.product.price * item.quantity }} €</td>
                     <td>
                         <a href="{{ path("cart_delete", {"id": item.product.id, "type": CAKE_TYPE}) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
                     </td>
@@ -32,10 +37,10 @@
             {% endfor %}
             {% for item in panier[VERRINE_TYPE] %}
                 <tr>
-                    <td><img src="{{ asset(imageFolder ~ item.product.image) }}" class="image-produit">{{ item.product.title }}</td>
-                    <td>{{ item.product.price }}</td>
+                    <td class="info-product"><img src="{{ asset(imageFolder ~ item.product.image) }}" class="image-produit"><span>{{ item.product.title }}</span></td>
+                    <td>{{ item.product.price }} €</td>
                     <td>{{ item.quantity }}</td>
-                    <td>{{ item.product.price * item.quantity }}</td>
+                    <td>{{ item.product.price * item.quantity }} €</td>
                     <td>
                         <a href="{{ path("cart_delete", {"id": item.product.id, "type": VERRINE_TYPE}) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
                     </td>
@@ -43,15 +48,16 @@
             {% endfor %}
             </tbody>
             <tfoot>
-            <tr>
-                <td colspan="3" class="text-right">Total :</td>
-                <td>{{ total }}</td>
-                <td></td>
-            </tr>
+                <tr class="total">
+                    <td colspan="3">Total :</td>
+                    <td>{{ total }} €</td>
+                    <td></td>
+                </tr>
             </tfoot>
         </table>
+        <button class="valider-panier">VALIDER !</button>
     {% else %}
-        <p>Votre panier est vide !</p>
+        <p class="panier-vide">Votre panier est vide !</p>
     {% endif %}
 
 

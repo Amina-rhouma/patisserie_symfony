@@ -4,7 +4,6 @@
     <ul class="main-menu">
         <li><a href="{{ path('showCakeList') }}">Gateaux</a></li>
         <li><a href="{{ path('showVerrineList') }}">Verrines</a></li>
-        <li><a href="#">Formation</a></li>
         <li><a href="#">A propos</a></li>
 
         {% if not app.user or not ('ROLE_ADMIN' in app.user.getRoles()) %}
