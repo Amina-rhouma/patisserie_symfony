@@ -1,11 +1,17 @@
 {% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/update.css') }}" />
+{% endblock %}
 
 {% block title %}Update product{% endblock %}
 
 {% block body %}
+    <h2>Modifier votre produit!</h2>
     {{ form_start(monFormulaire) }}
     {{ form_widget(monFormulaire) }}
-    <img src="{{ asset(imageFolder ~ oldImage) }}" />
-    <input type="submit" value="Modifier" />
+    <img src="{{ asset(imageFolder ~ oldImage) }}" class="img-update" />
+    <input type="submit" value="Modifier"/>
     {{ form_end(monFormulaire) }}
 {% endblock %}

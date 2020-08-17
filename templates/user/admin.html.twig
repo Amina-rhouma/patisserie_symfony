@@ -3,65 +3,65 @@
 {% block stylesheets %}
     {{ parent() }}
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/product-list.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}" />
 {% endblock %}
 
 {% block body %}
-    <h1>Panel d'administration</h1>
-    <a href="/produits/gateaux/ajouter">Ajouter Gateau</a>
-    <a href="/produits/verrines/ajouter">Ajouter Vrrine</a>
+    <section>
+        <h2>Panel d'administration</h2>
+        <div id="lien-ajout">
+            <a href="/produits/gateaux/ajouter"><button> <i class="fas fa-plus"></i> Ajouter Gateau</button></a>
+            <a href="/produits/verrines/ajouter"><button>  <i class="fas fa-plus"></i> Ajouter Verrine</button></a>
+        </div>
 
+    </section>
 
-    <h2>1. Verrines</h2>
+    <h3>Liste des Verrines</h3>
     <table>
         <tr>
             <th>ID</th>
             <th>Nom du produit</th>
             <th>Image</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
+            <th>Gérer</th>
         </tr>
 
         {% for verrine in verrineList %}
         <tr>
             <td>{{ verrine.id }}</td>
             <td>{{ verrine.title }}</td>
-            <td><img src="{{ asset(imageFolder ~ verrine.getImage()) }}"></td>
-            <td><a href="/produits/verrines/{{ verrine.id }}/modifier">modifier</a></td>
-            <td><a
+            <td><img src="{{ asset(imageFolder ~ verrine.getImage()) }}" class="image-produit"></td>
+            <td><a href="/produits/verrines/{{ verrine.id }}/modifier"><i class="fas fa-edit"></i></a>
+                <a
                         href="#"
                         class="delete-button"
                         data-product-id="{{ verrine.id }}"
                         data-product-type="{{ verrineType }}"
-                >supprimer</a>
-            </td>
+                ><i class="fas fa-trash-alt"></i></a></td>
         </tr>
         {% endfor %}
     </table>
-    <h2>2. Gateaux</h2>
+    <h3>Liste des Gateaux</h3>
     <table>
         <tr>
             <th>ID</th>
             <th>Nom du produit</th>
             <th>Image</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
+            <th>Gérer</th>
+            <th></th>
         </tr>
 
         {% for cake in gateauList %}
             <tr>
                 <td>{{ cake.id }}</td>
                 <td>{{ cake.title }}</td>
-                <td><img src="{{ asset(imageFolder ~ cake.getImage()) }}"></td>
-                <td><a href="/produits/gateaux/{{ cake.id }}/modifier">modifier</a></td>
-                <td>
+                <td><img src="{{ asset(imageFolder ~ cake.getImage()) }}" class="image-produit"></td>
+                <td><a href="/produits/gateaux/{{ cake.id }}/modifier"><i class="fas fa-edit"></i></a>
                     <a
-                        href="#"
-                        class="delete-button"
-                        data-product-id="{{ cake.id }}"
-                        data-product-type="{{ cakeType }}"
-                    >supprimer</a>
-                </td>
+                            href="#"
+                            class="delete-button"
+                            data-product-id="{{ cake.id }}"
+                            data-product-type="{{ cakeType }}"
+                    ><i class="fas fa-trash-alt"></i></a></td>
             </tr>
         {% endfor%}
     </table>

@@ -65,6 +65,7 @@ class SecurityController extends AbstractController
             $user->setBirthday($birthdayString);
             $user->setAddress($data['address']);
             $user->setEmail($data['email']);
+            $user->setRoles(['ROLE_USER']);
 
             $mdpClair = $data['password'];
             $mdpEncoded = $this->passwordEncoder->encodePassword($user, $mdpClair);
