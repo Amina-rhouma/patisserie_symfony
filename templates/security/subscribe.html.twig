@@ -1,17 +1,17 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
-
     <link rel="stylesheet" type="text/css" href="{{ asset('css/subscribe.css') }}" />
 {% endblock %}
 
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau compte</h1>
-
-    {{ form_start(monFormulaire) }}
-    {{ form_widget(monFormulaire) }}
-    <input type="submit"  value="Ajouter" class="btn btn-primary"/>
-    {{ form_end(monFormulaire) }}
+    <section>
+        <h2>Créer un nouveau compte</h2>
+            {{ form_start(monFormulaire) }}
+            {{ form_widget(monFormulaire) }}
+            <input type="submit"  value="Ajouter" class="btn btn-primary"/>
+            {{ form_end(monFormulaire) }}
+    </section>
 {% endblock %}
