@@ -16,6 +16,31 @@
             <img src="{{ asset(imageFolder ~ "img2.jpg") }}">
             <img src="{{ asset(imageFolder ~ "img3.jpg") }}">
         </div>
+        <section class="about">
+            <h3><span>Qui sommes-nous ?</span></h3>
+            <p>"Avec le plaisir pour seul guide", succombez à nos associations de saveurs originales et iconiques, à nos créations fruitées et à nos entremets incontournables. Pour lesquelles allez vous vous laisser tenter ?</p>
+            <p>Pâtisserie fine fondée, en 2017 à Gabes, en Tunisie, par Fe Ao, elle est cette tradition fière et fidèle, à la richesse subtile et intemporelle.</p>
+        </section>
+        <section class="produits">
+            <h3><span>Nos Produits</span></h3>
+            <div>
+                <a href="{{ path('showCakeList') }}"><span>Gateaux</span><img src="{{ (imageProduit ~ "gateau-chocolat-blanc.jpg") }}"></a>
+                <a href="{{ path('showVerrineList') }}"><span>Verrine</span><img src="{{ (imageProduit ~ "verrinemacarron.jpg") }}"></a>
+            </div>
+        </section>
+        <section class="insta">
+            <h2><a href="https://www.instagram.com/by___mina/">Suivez-nous <span>@by___mina</span></a></h2>
+            <div class="img-insta">
+                <img src="{{ asset(imageInsta ~ "img1.jpg") }}">
+                <img src="{{ asset(imageInsta ~ "img2.jpg") }}">
+                <img src="{{ asset(imageInsta ~ "img3.jpg") }}">
+                <img src="{{ asset(imageInsta ~ "img4.jpg") }}">
+                <img src="{{ asset(imageInsta ~ "img5.jpg") }}">
+                <img src="{{ asset(imageInsta ~ "img6.jpg") }}">
+                <img src="{{ asset(imageInsta ~ "img7.jpg") }}">
+                <img src="{{ asset(imageInsta ~ "img8.jpg") }}">
+            </div>
+        </section>
 
         {% endblock %}
     {% block javascripts %}
@@ -25,6 +50,7 @@
               auto: true,
               stopAutoOnClick: true,
               controls: false,
+              responsive: true,
             });
           });
         </script>
