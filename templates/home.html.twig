@@ -4,15 +4,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}" />
     {% endblock %}
 
     {% block title %}Accueil{% endblock %}
 
     {% block body %}
         <div class="slider">
-            <img src="{{ asset(imageFolder ~ "img3.jpg") }}">
-            <img src="{{ asset(imageFolder ~ "img2.jpg") }}">
             <img src="{{ asset(imageFolder ~ "img1.jpg") }}">
+            <img src="{{ asset(imageFolder ~ "img2.jpg") }}">
+            <img src="{{ asset(imageFolder ~ "img3.jpg") }}">
         </div>
 
         {% endblock %}
@@ -21,7 +23,8 @@
           $(document).ready(function(){
             $('.slider').bxSlider({
               auto: true,
-              stopAutoOnClick: true
+              stopAutoOnClick: true,
+              controls: false,
             });
           });
         </script>
