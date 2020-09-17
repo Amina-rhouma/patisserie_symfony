@@ -14,6 +14,15 @@ renderRatings(lastScript.dataset.avgRatings);
 addRatingsListenerToStars(productId, productType);
 addHoverListenerToStars();
 
+/**
+ *
+ * cette fonction envoi au backend les nouvelles valeurs du vote
+ * pour le produit productId.
+ *
+ * @param productId l'identifiant du produit
+ * @param productType le type de produit(cake/verrine)
+ * @param rating le nouveau vote de cet utilisateur pour ce produit
+ */
 function saveRating(productId, productType, rating) {
   axios
     .post(
@@ -34,6 +43,11 @@ function saveRating(productId, productType, rating) {
     });
 }
 
+/**
+ * ajoute un listener au icons etoiles
+ * @param productId l'identifiant du produit
+ * @param productType le type de produit(cake/verrine)
+ */
 function addRatingsListenerToStars(productId, productType) {
   images.forEach(function (element, index) {
     element.addEventListener("click", function() {
@@ -42,6 +56,9 @@ function addRatingsListenerToStars(productId, productType) {
   });
 }
 
+/**
+ * change les images de l'etoile au survol de la souris
+ */
 function addHoverListenerToStars() {
   images.forEach(function (element, index) {
     element.addEventListener("mouseover", function() {
@@ -63,6 +80,11 @@ function addHoverListenerToStars() {
   });
 }
 
+/**
+ * affiche les images des images etoiles correspondantes
+ * au rating passé en parametre
+ * @param rating
+ */
 function renderRatings(rating) {
   repartition = [];
 

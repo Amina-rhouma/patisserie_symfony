@@ -6,6 +6,10 @@ const lastScript = scripts[scripts.length - 1];
 const cakeType = lastScript.dataset.cakeType;
 const verrineType = lastScript.dataset.verrineType;
 
+/**
+ * ajoute un listener au boutton du corbeille pour supprimer lle produit en question
+ * @param elementLists la liste des boutton de suppression de produit
+ */
 function addListenerToDeleteButton(elementLists) {
   elementLists.forEach(function (element) {
     element.addEventListener("click", function(event) {
@@ -29,7 +33,14 @@ function addListenerToDeleteButton(elementLists) {
     });
   });
 }
-
+/**
+ * construit le chemin de l'endpoint de API de suppression
+ * en fonction des parametres
+ *
+ * @param productId l'identifiant du produit
+ * @param productType le type de produit(cake/verrine)
+ * @returns {string} l'url de l'endpoint calculé
+ */
 function buildDeleteUrl(productId, productType) {
   let url = "/produits";
   if (productType == cakeType) {
@@ -39,7 +50,12 @@ function buildDeleteUrl(productId, productType) {
   }
   return url + "/" + productId;
 }
-
+/**
+ * envoi un requette de suppression de produit au backend
+ *
+ * @param productId l'identifiant du produit
+ * @param productType le type de produit(cake/verrine)
+ */
 function deleteProduct(productId, productType) {
 
   const url = buildDeleteUrl(productId, productType);
