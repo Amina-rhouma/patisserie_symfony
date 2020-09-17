@@ -25,28 +25,18 @@
             </div>
         </article>
     </div>
+{% endblock %}
 
-    {% endblock %}
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    {% block javascripts %}
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-        <script src="{{ asset('js/ratings.js') }}" type="application/javascript"></script>
-
-        <script>
-            const images = document.querySelectorAll('.ratings img');
-            const emptyStar = "{{ asset(iconsFolder ~ "star-empty.svg") }}";
-            const halfStar = "{{ asset(iconsFolder ~ "star-half.svg") }}";
-            const fullStar = "{{ asset(iconsFolder ~ "star-full.svg") }}";
-            let currentRating = {{ avgRatings }};
-
-            addRatingsListenerToStars(
-                "{{ product.id }}",
-                "{{ type }}"
-            );
-            addHoverListenerToStars();
-
-            renderRatings({{ avgRatings }});
-        </script>
-
+    <script src="{{ asset('js/ratings.js') }}"
+            type="application/javascript"
+            data-empty-star-icon="{{ asset(iconsFolder ~ "star-empty.svg") }}"
+            data-half-star-icon="{{ asset(iconsFolder ~ "star-half.svg") }}"
+            data-full-star-icon="{{ asset(iconsFolder ~ "star-full.svg") }}"
+            data-avg-ratings="{{ avgRatings }}"
+            data-product-id="{{ product.id }}"
+            data-product-type="{{ type }}"
+    ></script>
 {% endblock %}

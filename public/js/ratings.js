@@ -1,3 +1,19 @@
+const images = document.querySelectorAll('.ratings img');
+
+const scripts = document.getElementsByTagName('script');
+const lastScript = scripts[scripts.length - 1];
+const emptyStar = lastScript.dataset.emptyStarIcon;
+const halfStar = lastScript.dataset.halfStarIcon;
+const fullStar = lastScript.dataset.fullStarIcon;
+
+let currentRating = lastScript.dataset.avgRatings;
+let productId = lastScript.dataset.productId;
+let productType = lastScript.dataset.productType;
+
+renderRatings(lastScript.dataset.avgRatings);
+addRatingsListenerToStars(productId, productType);
+addHoverListenerToStars();
+
 function saveRating(productId, productType, rating) {
   axios
     .post(

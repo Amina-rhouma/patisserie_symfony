@@ -65,21 +65,5 @@
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script src="{{ asset('js/delete.js') }}" type="application/javascript"></script>
-
-    <script>
-      function buildDeleteUrl(productId, productType) {
-        let url = "/produits";
-        if (productType == "{{ cakeType }}") {
-          url = url + "/gateaux";
-        } else if (productType == "{{ verrineType }}") {
-          url = url + "/verrines";
-        }
-        return url + "/" + productId;
-      }
-
-      const deleteButtons = document.querySelectorAll('table .delete-button');
-      addListenerToDeleteButton(deleteButtons);
-    </script>
-
+    <script src="{{ asset('js/delete.js') }}" type="application/javascript" data-cake-type="{{ cakeType }}" data-verrine-type="{{ verrineType }}"></script>
 {% endblock %}
