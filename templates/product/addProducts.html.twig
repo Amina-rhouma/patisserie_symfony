@@ -1,15 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block title %}ajouter{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/ajout.css') }}" />
-{% endblock %}
-
 {% block body %}
-    {{ form_start(monFormulaire) }}
-        {{ form_widget(monFormulaire) }}
-        <input type="submit" value="Ajouter" />
-    {{ form_end(monFormulaire) }}
+    <div class="ajout">
+        {{ form_start(monFormulaire) }}
+            {{ form_widget(monFormulaire) }}
+            <input type="submit" value="Ajouter" />
+        {{ form_end(monFormulaire) }}
+    </div>
 {% endblock %}

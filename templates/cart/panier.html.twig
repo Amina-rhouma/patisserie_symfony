@@ -1,9 +1,4 @@
 {% extends "base.html.twig" %}
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/panier.css') }}" />
-{% endblock %}
 
 {% set CAKE_TYPE = constant('App\\Entity\\Cake::TYPE') %}
 {% set VERRINE_TYPE = constant('App\\Entity\\Verrine::TYPE') %}
@@ -11,6 +6,7 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <div class="panier">
     <h2>Mon panier</h2>
     {% if panier[CAKE_TYPE] | length > 0 or panier[VERRINE_TYPE] | length > 0  %}
         <table class="table">
@@ -59,6 +55,6 @@
     {% else %}
         <p class="panier-vide">Votre panier est vide !</p>
     {% endif %}
-
+    </div>
 
 {% endblock %}

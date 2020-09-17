@@ -1,11 +1,5 @@
 {% extends "base.html.twig" %}
 {% block title %}liste des gateaux{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/product-list.css') }}" />
-{% endblock %}
-
 {% block body %}
     <div class="product-list">
         {% for cake in cakeList %}

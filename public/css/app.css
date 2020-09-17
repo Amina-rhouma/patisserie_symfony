@@ -1,3 +1,7 @@
+:root {
+  --about-page-margin-value: 50px;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -66,4 +70,699 @@ img {
 
 main .product-meta {
   display: flex;
+}
+header {
+  width: 100%;
+  padding: 2em 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+header h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 2.5rem;
+  margin-bottom: 0.5em;
+}
+header h1 a,
+header h1 a:hover {
+  text-decoration: none;
+  color: black;
+}
+header h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 1.5rem;
+}
+header > ul.main-menu {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  list-style-type: none;
+  justify-content: space-between;
+  width: 700px;
+  margin-top: 2em;
+}
+
+header > ul.main-menu li {
+  width: 100%;
+}
+
+header > ul.main-menu li a {
+  display: block;
+  text-decoration: none;
+  padding: 0.5em;
+  background: white;
+  color: black;
+  transition-duration: 0.5s;
+}
+
+header > ul.main-menu li a:hover {
+  background: black;
+  color: white;
+  transition-duration: 0.5s;
+}
+
+header ul.top-menu {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+header ul.top-menu li a {
+  display: block;
+  color: black;
+  padding: 10px 20px;
+}
+
+header ul.top-menu:hover li a:hover {
+  text-decoration: none;
+  color: #000000;
+  border-bottom: 1px solid #000000;
+}
+
+header ul.top-menu li a i {
+  margin-right: 10px;
+}
+
+header ul.top-menu:hover li a {
+  color: #BBBBBB;
+}
+
+footer {
+  width: 100%;
+  padding: 2em 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer .social-links {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  margin-bottom: 2em;
+}
+
+footer .social-links a {
+  text-decoration: none;
+  color: #0a0a0a;
+}
+
+main.container {
+  max-width: 100%;
+  padding: 0;
+}
+
+main.container section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 25px 0;
+  text-align: center;
+}
+
+section h2 {
+  text-transform: capitalize;
+  font-size: 2em;
+  text-align: center;
+  padding: 2em;
+  font-weight: bold;
+}
+
+section h2 a {
+  color: black;
+  text-decoration: none;
+}
+
+div.bx-wrapper {
+  box-shadow: none;
+  overflow: hidden;
+  border: none;
+}
+
+section h3 {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 1.8em;
+  justify-content: center;
+}
+
+section h3 span {
+  margin: 0 1em;
+}
+
+section h3::before,
+section h3::after {
+  content: "";
+  border-bottom: 1px solid #888888;
+  flex-grow: 1;
+}
+
+section.produits div {
+  display: flex;
+  justify-content: space-around;
+}
+
+section.produits div a {
+  position: relative;
+}
+
+section.produits div a:hover span {
+  background-color: #0008;
+  transition-duration: 200ms;
+}
+
+section.produits div a span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  background-color: #0005;
+  line-height: 200px;
+  font-size: 2em;
+  transition-duration: 200ms;
+}
+
+section.produits div a img {
+  width: 200px;
+  height: 200px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+
+section.about p {
+  line-height: 1.5em;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+
+section.insta h2 a,
+section.insta h2 a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+section.insta h2 a span {
+  color: lightpink;
+}
+
+section.insta h2 a:hover span {
+  color: #ff64af;
+}
+
+section .img-insta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+section.insta .img-insta img {
+  width: 200px;
+  height: 200px;
+  margin: 1em;
+  box-shadow: 0 0 10px #0005;
+}
+
+/* Sign in page */
+
+section.mon-compte {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+section.mon-compte h2,
+section.mon-compte h3,
+section.mon-compte #connection input[type=submit],
+section.mon-compte #inscription a.button {
+  text-transform: uppercase;
+}
+
+section.mon-compte h2 {
+  color: darkred;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+section.mon-compte h3 {
+  font-weight: bold;
+}
+
+section.mon-compte #connection {
+  margin: 35px 0 75px 0;
+}
+
+section.mon-compte #connection form {
+  margin-top: 20px;
+}
+
+section.mon-compte #connection div.field {
+  display: flex;
+  align-items: baseline;
+  margin: 20px 0;
+}
+
+section.mon-compte #connection div.field label {
+  width: 120px;
+}
+
+section.mon-compte #connection div.field input {
+  flex-grow: 1;
+}
+
+section.mon-compte #connection input[type=submit],
+section.mon-compte #inscription a.button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 0;
+  background: black;
+  color: white;
+  border: none;
+  transition-duration: 0.5s;
+}
+
+section.mon-compte #connection input[type=submit]:hover,
+section.mon-compte #inscription a.button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  transition-duration: 0.5s;
+}
+
+section.mon-compte #inscription p {
+  margin: 20px 0;
+}
+
+/* Product List pages */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-list .item {
+  flex: 0 100%;
+  padding: 10px;
+}
+.product-list .item .product {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.product-list .item .product img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+.product-list .product h2 {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+.product-list .product h2,
+.product-list .product p {
+  text-align: center;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: black;
+}
+.product-list .product button {
+  width: 100%;
+  padding: 10px;
+  text-transform: capitalize;
+  background-color: white;
+  border: 1px solid black;
+  margin-top: 10px;
+}
+.product-list .product button:hover {
+  background: black;
+  color: white;
+  transition-duration: 0.5s;
+}
+
+/* About */
+
+main > div.about h2 {
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+main > div.about section {
+  overflow: visible;
+  clear: both;
+  margin-top: var(--about-page-margin-value);
+}
+
+main > div.about section p {
+  line-height: 1.5em;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+
+main > div.about section img {
+  width: 250px;
+  margin-bottom: var(--about-page-margin-value);
+  box-shadow: 0 0 10px #0005;
+}
+
+main > div.about section img.left {
+  float: left;
+  margin-right: var(--about-page-margin-value);
+}
+
+main > div.about section img.right {
+  float: right;
+  margin-left: var(--about-page-margin-value);
+}
+/* Panier */
+.panier .panier-vide {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.panier .table {
+  max-width: 100%;
+}
+
+.panier .table td {
+  vertical-align: middle;
+}
+
+.panier .image-produit {
+  width:100px;
+}
+
+.panier .paniertd.info-product {
+  display: flex;
+  align-items: center;
+}
+
+.panier .info-product span {
+  margin-left: 1em;
+  text-transform: capitalize;
+}
+
+.panier .total td:first-child {
+  text-align: right;
+}
+
+.panier .total td:nth-child(2) {
+  font-weight: bold;
+}
+
+.panier h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: darkred;
+  font-size: 1.6em;
+  margin-bottom: 2em;
+}
+
+.panier button.valider-panier {
+  display: block;
+  width: 50%;
+  min-width: 300px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 2em auto;
+  background: black;
+  color: white;
+  border: none;
+  transition-duration: 0.5s;
+}
+
+.panier button.valider-panier:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  transition-duration: 0.5s;
+}
+
+/* Admin */
+#admin section h2 {
+  color: darkred;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+#admin .image-produit {
+  width:100px;
+}
+
+#admin h3 {
+  font-size: 1.2em;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 2em;
+}
+
+#admin #lien-ajout {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#admin #lien-ajout button {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  text-transform: capitalize;
+  font-weight: 100;
+  transition: 200ms;
+  cursor: pointer;
+  margin: 0.8em;
+}
+
+#admin #lien-ajout button:hover {
+  background: black;
+  color: white;
+  transition: 200ms;
+}
+
+#admin i {
+  margin: 0.8em;
+}
+
+#admin table {
+  width: 100%;
+}
+
+#admin table tr {
+  border-bottom: 1px solid #ccd;
+}
+
+#admin table td,
+#admin table th {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 0;
+}
+/* Product*/
+main .product {
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.product article {
+  display: flex;
+  flex-direction: column;
+}
+
+.product article > img:first-child {
+  width: 100%;
+  max-width: 600px;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
+}
+
+.product article #product-info {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.product article #product-info > :not(:first-child) {
+  margin-top: 20px;
+}
+
+.product article #product-info h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.product article #product-info #price {
+  font-style: italic;
+  font-weight: 100;
+  color: #555555;
+  margin: 1em;
+}
+
+.product article #product-info #price span {
+  font-style: initial;
+  color: initial;
+  font-weight: bold;
+}
+
+.product article #product-info button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  text-transform: uppercase;
+  font-weight: 100;
+  transition: 200ms;
+  cursor: pointer;
+}
+
+.product article #product-info button:hover {
+  background: black;
+  color: white;
+  transition: 200ms;
+}
+
+.product .ratings img:hover {
+  cursor: pointer;
+}
+/* Add*/
+.ajout input[type=submit] {
+  display: block;
+  width: 200px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 50px auto;
+  background: black;
+  color: white;
+  border: none;
+  transition-duration: 0.5s;
+
+}
+.ajout input[type=submit]:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  transition-duration: 0.5s;
+}
+/* Update*/
+.update .img-update {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  padding: 2em;
+}
+.update input[type=submit] {
+  display: block;
+  width: 200px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  background: black;
+  color: white;
+  border: none;
+  transition-duration: 0.5s;
+}
+.update input[type=submit]:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  transition-duration: 0.5s;
+}
+/* Subscribe*/
+.subcribe section h2 {
+  color: darkred;
+  font-size: 1.6em;
+  text-align: center;
+}
+.subcribe section input[type=submit] {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 0;
+  background: black;
+  color: white;
+  border: none;
+  transition-duration: 0.5s;
+  font-size: 1em;
+}
+
+.subcribe section input[type=submit]:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  transition-duration: 0.5s;
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+  div.bx-wrapper img {
+    height: 300px;
+    object-fit: cover;
+  }
+
+  header > ul.main-menu {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  header > ul.main-menu li {
+    margin: 0.5em 0;
+  }
+
+  .product article > img:first-child {
+    align-self: center;
+  }
+
+  .panier button.valider-panier {
+    width: 100%;
+  }
+}
+
+/* Tablet & Desktop */
+@media only screen and (min-width: 768px) {
+  .product-list .item {
+    flex: 0 50%;
+  }
+
+  .panier .table {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .product main {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .product article {
+    flex-direction: row;
+  }
+
+  .product article > img:first-child {
+    max-width: 600px;
+    margin-right: 20px;
+  }
+
+  .product article #product-info {
+    text-align: left;
+  }
 }

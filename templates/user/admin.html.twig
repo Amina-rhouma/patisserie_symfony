@@ -1,71 +1,66 @@
 {% extends "base.html.twig" %}
 {% block title %}Admin Dashboard{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}" />
-{% endblock %}
 
 {% block body %}
-    <section>
-        <h2>Panel d'administration</h2>
-        <div id="lien-ajout">
-            <a href="/produits/gateaux/ajouter"><button> <i class="fas fa-plus"></i> Ajouter Gateau</button></a>
-            <a href="/produits/verrines/ajouter"><button>  <i class="fas fa-plus"></i> Ajouter Verrine</button></a>
-        </div>
+    <div id="admin">
+        <section>
+            <h2>Panel d'administration</h2>
+            <div id="lien-ajout">
+                <a href="/produits/gateaux/ajouter"><button> <i class="fas fa-plus"></i> Ajouter Gateau</button></a>
+                <a href="/produits/verrines/ajouter"><button>  <i class="fas fa-plus"></i> Ajouter Verrine</button></a>
+            </div>
+        </section>
 
-    </section>
-
-    <h3>Liste des Verrines</h3>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nom du produit</th>
-            <th>Image</th>
-            <th>Gérer</th>
-        </tr>
-
-        {% for verrine in verrineList %}
-        <tr>
-            <td>{{ verrine.id }}</td>
-            <td>{{ verrine.title }}</td>
-            <td><img src="{{ asset(imageFolder ~ verrine.getImage()) }}" class="image-produit"></td>
-            <td><a href="/produits/verrines/{{ verrine.id }}/modifier"><i class="fas fa-edit"></i></a>
-                <a
-                        href="#"
-                        class="delete-button"
-                        data-product-id="{{ verrine.id }}"
-                        data-product-type="{{ verrineType }}"
-                ><i class="fas fa-trash-alt"></i></a></td>
-        </tr>
-        {% endfor %}
-    </table>
-    <h3>Liste des Gateaux</h3>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nom du produit</th>
-            <th>Image</th>
-            <th>Gérer</th>
-            <th></th>
-        </tr>
-
-        {% for cake in gateauList %}
+        <h3>Liste des Verrines</h3>
+        <table>
             <tr>
-                <td>{{ cake.id }}</td>
-                <td>{{ cake.title }}</td>
-                <td><img src="{{ asset(imageFolder ~ cake.getImage()) }}" class="image-produit"></td>
-                <td><a href="/produits/gateaux/{{ cake.id }}/modifier"><i class="fas fa-edit"></i></a>
+                <th>ID</th>
+                <th>Nom du produit</th>
+                <th>Image</th>
+                <th>Gérer</th>
+            </tr>
+
+            {% for verrine in verrineList %}
+            <tr>
+                <td>{{ verrine.id }}</td>
+                <td>{{ verrine.title }}</td>
+                <td><img src="{{ asset(imageFolder ~ verrine.getImage()) }}" class="image-produit"></td>
+                <td><a href="/produits/verrines/{{ verrine.id }}/modifier"><i class="fas fa-edit"></i></a>
                     <a
                             href="#"
                             class="delete-button"
-                            data-product-id="{{ cake.id }}"
-                            data-product-type="{{ cakeType }}"
+                            data-product-id="{{ verrine.id }}"
+                            data-product-type="{{ verrineType }}"
                     ><i class="fas fa-trash-alt"></i></a></td>
             </tr>
-        {% endfor%}
-    </table>
+            {% endfor %}
+        </table>
+        <h3>Liste des Gateaux</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nom du produit</th>
+                <th>Image</th>
+                <th>Gérer</th>
+                <th></th>
+            </tr>
 
+            {% for cake in gateauList %}
+                <tr>
+                    <td>{{ cake.id }}</td>
+                    <td>{{ cake.title }}</td>
+                    <td><img src="{{ asset(imageFolder ~ cake.getImage()) }}" class="image-produit"></td>
+                    <td><a href="/produits/gateaux/{{ cake.id }}/modifier"><i class="fas fa-edit"></i></a>
+                        <a
+                                href="#"
+                                class="delete-button"
+                                data-product-id="{{ cake.id }}"
+                                data-product-type="{{ cakeType }}"
+                        ><i class="fas fa-trash-alt"></i></a></td>
+                </tr>
+            {% endfor%}
+        </table>
+    </div>
 {% endblock %}
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
